@@ -1,4 +1,4 @@
-package DMSXL.Array;
+package programmer.Array;
 
 /**
  * @author Dale
