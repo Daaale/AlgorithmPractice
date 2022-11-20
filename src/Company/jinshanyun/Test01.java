@@ -1,46 +1,43 @@
 package Company.jinshanyun;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
 /**
- * @author Dale
- * @create 2022-11-19 19:58
- * @description
+ * @Author Dale
+ * @Date 2022/11/20 19:55
+ * @Description
  */
 public class Test01 {
     public static void main(String[] args) {
+//        String str = "Who are Are you";
         Scanner in = new Scanner(System.in);
         String str = in.nextLine();
-        int res = getMaxWords(str);
+        String res = removeDup(str);
         System.out.println(res);
     }
 
-    private static int getMaxWords(String str) {
-
-        HashSet<Character> baseSet = new HashSet<>();
-        baseSet.add('a');
-        baseSet.add('e');
-        baseSet.add('i');
-        baseSet.add('o');
-        baseSet.add('u');
-
-        //统计元音和辅音的个数
-        int a = 0;//元音个数
-        int b = 0;//辅音个数
-        for (int i = 0; i < str.length(); i++) {
-            char temp = str.charAt(i);
-            if (baseSet.contains(temp)) {
-                a ++;
+    private static String removeDup(String str) {
+        StringBuilder sb = new StringBuilder();
+        String[] split = str.split(" ");
+        String temp = "";
+        if (split.length > 0) {
+            sb.append(split[0]);
+            temp = split[0].toLowerCase();
+        }
+        for (int i = 1; i < split.length; i++) {
+            //1.保存当前字符串
+            String s = split[i].toLowerCase();
+            //2.判断是否相同
+            if (temp.equals(s)) {
+                //相同---跳过
+                continue;
             } else {
-                b ++;
+                //不相同---添加 + 更换temp
+                sb.append(" ");
+                sb.append(split[i]);
+                temp = s;
             }
         }
-        //计算
-        if (a >= b - 1) {
-            return a + b;
-        } else {
-            return 2 * a + 1;
-        }
+        return sb.toString();
     }
 }
