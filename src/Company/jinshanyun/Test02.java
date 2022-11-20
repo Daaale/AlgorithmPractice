@@ -3,64 +3,91 @@ package Company.jinshanyun;
 import java.util.Scanner;
 
 /**
- * @author Dale
- * @create 2022-11-19 20:09
- * @description
+ * @Author Dale
+ * @Date 2022/11/20 19:58
+ * @Description
  */
 public class Test02 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int t = in.nextInt();
-        in.nextLine();
-        for (int i = 0; i < t; i++) {
-            int m = in.nextInt();
-            int n = in.nextInt();
-            in.nextLine();
-            char[][] base = new char[m][m];
-            char[][] son = new char[n][n];
-            for (int j = 0; j < m; j++) {
-                String s = in.nextLine();
-                for (int k = 0; k < s.length(); k++) {
-                    base[j][k] = s.charAt(k);
-                }
-            }
-            for (int j = 0; j < n; j++) {
-                String s = in.nextLine();
-                for (int k = 0; k < s.length(); k++) {
-                    son[j][k] = s.charAt(k);
-                }
-            }
-            String res = judge(base, son);
-            System.out.println(res);
-        }
+        String line = in.nextLine();
+        String[] split = line.split(" ");
+        char x = split[0].charAt(0);
+        int v = Integer.parseInt(split[1]);
+        int t = Integer.parseInt(split[2]);
+        int max = getMax(x, v, t);
+        int min = getMin(x, v, t);
+        System.out.println(max + " " + min);
     }
 
-    private static String judge(char[][] base, char[][] son) {
-        //遍历位置
-        int pos = base.length - son.length;
-        for (int i = 0; i <= pos; i++) {
-            for (int j = 0; j <= pos; j++) {
-                // i j 为左上顶点起始位置
-                //验证从该节点开始的子矩阵
-                if(judgeSon(i, j, base, son)) {
-                    return "Yes";
-                }
+    private static int getMin(char x, int v, int t) {
+        t = t - 3;
+        int a = 0;//a 失败的次数
+        int b = 0;
+        int c = 0;
+
+        if (x == 'a') {
+            t = t - v;
+            a = v;
+            c = t / 3;
+            if (t % 3 == 0) {
+                b = 0;
+            } else if (t % 3 == 1){
+                c = c - 1;
+                b = 2;
+            } else {
+                b = 1;
+            }
+        } else if (x == 'b') {
+            t = t - 2 * v;
+            b = v;
+            c = t / 3;
+            if (t % 3 == 0) {
+                a = 0;
+            } else if (t % 3 == 1) {
+                a = 1;
+            } else {
+                a = 2;
+            }
+        } else {
+            c = v;
+            t = t - 3 * v;
+            b = t / 2;
+            if (t % 2 == 0) {
+                a = 0;
+            } else {
+                a = 1;
             }
         }
-        return "No";
+
+        return a + b + c;
     }
 
-    //验证从 i j 节点开始的子矩阵
-    private static boolean judgeSon(int a, int b, char[][] base, char[][] son) {
-
-        for (int i = 0; i < son.length; i++) {
-            for (int j = 0; j < son.length; j++) {
-                if (son[i][j] != base[i + a][j + b]) {
-                    return false;
-                }
+    private static int getMax(char x, int v, int t) {
+        t = t - 3;
+        int a = 0;//a 失败的次数
+        int b = 0;
+        int c = 0;
+        if (x == 'a') {
+            t = t - v;
+            a = v;
+            b = t / 2;
+            if (t % 2 == 0) {
+                c = 0;
+            } else {
+                c = 1;
+                b = b - 1;
             }
+        } else if (x == 'b') {
+            b = v;
+            t = t - 2 * v;
+            a = t;
+        } else {
+            c = v;
+            t = t - 3 * v;
+            a = t;
         }
 
-        return true;
+        return a + b + c;
     }
 }
