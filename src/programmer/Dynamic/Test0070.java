@@ -9,7 +9,7 @@ package programmer.Dynamic;
  */
 public class Test0070 {
     public static void main(String[] args) {
-        int n = 3;
+        int n = 10;
         int res = climbStairs(n);
         System.out.println(res);
     }
