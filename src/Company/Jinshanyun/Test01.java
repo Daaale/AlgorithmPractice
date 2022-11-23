@@ -1,4 +1,4 @@
-package Company.jinshanyun;
+package Company.Jinshanyun;
 
 import java.util.Scanner;
 
