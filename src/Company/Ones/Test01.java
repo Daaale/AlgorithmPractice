@@ -1,4 +1,4 @@
-package Company.ones;
+package Company.Ones;
 
 import java.util.HashSet;
 import java.util.Scanner;
