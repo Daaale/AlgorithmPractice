@@ -12,6 +12,17 @@ public class Test1758 {
         System.out.println(res);
     }
     public static int minOperations(String s) {
-        return 0;
+        int res0 = 0;
+        int res1 = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int c = s.charAt(i) - 48;
+            if (c != i % 2) {
+                res0 ++;
+            }
+            if (c != (i + 1) % 2) {
+                res1 ++;
+            }
+        }
+        return Math.min(res0, res1);
     }
 }
