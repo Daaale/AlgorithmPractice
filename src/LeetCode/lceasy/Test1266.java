@@ -5,7 +5,7 @@ package LeetCode.lceasy;
  * @create 2023-03-23 9:20
  * @description
  */
-public class Test01266 {
+public class Test1266 {
     public static void main(String[] args) {
         int[][] points = {{1,1},{3,4},{-1,0}};
         int res = minTimeToVisitAllPoints(points);
