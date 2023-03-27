@@ -11,17 +11,18 @@ public class Test1379 {
     public static void main(String[] args) {
 
     }
-    public static final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+
+    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
         if (original == target) {
-            return target;
-        } else {
-            if (original.left != null) {
-                return getTargetCopy(original.left, cloned.left, target);
-            }
-            if (original.right != null) {
-                return getTargetCopy(original.right, cloned.right, target);
-            }
+            return cloned;
         }
-        return null;
+        TreeNode ans = null;
+        if (original.left != null) {
+            ans = this.getTargetCopy(original.left, cloned.left, target);
+        }
+        if (ans == null && original.right != null) {
+            return this.getTargetCopy(original.right, cloned.right, target);
+        }
+        return ans;
     }
 }
