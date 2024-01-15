@@ -11,6 +11,7 @@ import java.util.List;
 public class ExcelTest {
     public static void main(String[] args) {
         String fileName = TestFileUtil.getPath() + "file" + File.separator + "花名册.xlsx";
+        //System.out.println(fileName);
         EasyExcelNodeListener easyExcelNodeListener = new EasyExcelNodeListener();
         // 读Excel
         EasyExcel.read(fileName, ExcelNode.class, easyExcelNodeListener).sheet().doRead();
