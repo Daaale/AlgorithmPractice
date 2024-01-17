@@ -1,4 +1,4 @@
-package LeetCode.lceasy.test2000;
+package LeetCode.lcmedium.test2000;
 
 public class Test1551 {
     public static void main(String[] args) {
