@@ -11,7 +11,7 @@ public class Test0969 {
         }
     }
     public static List<Integer> pancakeSort(int[] arr) {
-
+        return null;
     }
 
     public static int[] reverse(int[] arr, int l) {
@@ -24,6 +24,6 @@ public class Test0969 {
                 res[i] = arr[i];
             }
         }
-        return res
+        return res;
     }
 }

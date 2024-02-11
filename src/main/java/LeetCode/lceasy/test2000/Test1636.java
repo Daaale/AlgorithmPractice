@@ -9,6 +9,6 @@ public class Test1636 {
         System.out.println(Arrays.toString(res));
     }
     public static int[] frequencySort(int[] nums) {
-
+        return null;
     }
 }
